@@ -37,7 +37,7 @@ describe('CalendarRange', function() {
     var prepared = CalendarRange.prepareDate(date);
 
     var day = date.getDate();
-    expect(prepared.weekday).toBe(day != 0 && day != 6);
+    expect(prepared.weekday).toBe(day !== 0 && day != 6);
     expect(prepared.day).toBe(date.getDate());
     expect(prepared.year).toBe(date.getFullYear());
     expect(prepared.month).toBe(date.getMonth());

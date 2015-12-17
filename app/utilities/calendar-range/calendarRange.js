@@ -7,7 +7,7 @@ var CalendarRange = {
     var day = date.getDay();
     return {
       date : date,
-      weekday : day != 0 && day != 6,
+      weekday : day !== 0 && day != 6,
       day : date.getDate(),
       month : date.getMonth(),
       year : date.getFullYear()
