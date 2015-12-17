@@ -1,0 +1,34 @@
+@import "bourbon";
+@import "neat";
+
+html, body {
+	height: 100%;
+}
+
+$grid-columns: 7;
+$max-width: 100%;
+
+calendar {
+	@include outer-container;
+	.weekdayName, .day {
+		@include span-columns(1);
+		@include omega(7n);
+		border: 1px solid #b3b3b3;
+		margin: 0;
+	}
+
+	.weekdayName {
+		height: 5%;
+		text-align: center;
+	}
+
+	.day {
+		height: 17%;
+		padding: .5em;
+	}
+
+	.greyDay {
+		background-color: #e6e6e6;
+	}
+}
+

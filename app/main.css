@@ -1,0 +1,38 @@
+html {
+  box-sizing: border-box; }
+
+*, *::after, *::before {
+  box-sizing: inherit; }
+
+html, body {
+  height: 100%; }
+
+calendar {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto; }
+  calendar::after {
+    clear: both;
+    content: "";
+    display: table; }
+  calendar .weekdayName, calendar .day {
+    float: left;
+    display: block;
+    margin-right: 4.11092%;
+    width: 10.76207%;
+    border: 1px solid #b3b3b3;
+    margin: 0; }
+    calendar .weekdayName:last-child, calendar .day:last-child {
+      margin-right: 0; }
+    calendar .weekdayName:nth-child(7n), calendar .day:nth-child(7n) {
+      margin-right: 0; }
+    calendar .weekdayName:nth-child(7n+1), calendar .day:nth-child(7n+1) {
+      clear: left; }
+  calendar .weekdayName {
+    height: 5%;
+    text-align: center; }
+  calendar .day {
+    height: 17%;
+    padding: .5em; }
+  calendar .greyDay {
+    background-color: #e6e6e6; }
