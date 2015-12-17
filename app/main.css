@@ -36,3 +36,5 @@ calendar {
     padding: .5em; }
   calendar .greyDay {
     background-color: #e6e6e6; }
+  calendar .today {
+    background-color: #ffd9b3; }

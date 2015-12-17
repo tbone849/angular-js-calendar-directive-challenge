@@ -1,6 +1,6 @@
 <div class="weekdayName" ng-repeat="name in weekdayNames">
 	{{name}}
 </div>
-<div class="day" ng-repeat="day in range.days" ng-class="{greyDay: day.month !== currentMonth}">
+<div class="day" ng-repeat="day in range.days" ng-class="{greyDay: day.month !== currentMonth, today: day.date.getDate() === today.getDate() && day.date.getMonth() === today.getMonth()}">
 	{{day.day}}
 </div> 
