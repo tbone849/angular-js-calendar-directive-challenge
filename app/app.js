@@ -6,10 +6,12 @@ angular.module('calendarDemoApp', [])
 			scope: true,
 			controller: function($scope, $element, $attrs){
 				$scope.weekdayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
+				$scope.months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+				
 				// get month range
 				$scope.range = CalendarRange.getMonthlyRange(new Date());
-				$scope.rangeMonth = $scope.range.start.toLocaleString('en-us', {month: 'long'});
+				$scope.rangeMonthNumber = $scope.range.start.getMonth();
+				$scope.rangeMonthName = $scope.months[$scope.rangeMonthNumber];
 				$scope.rangeYear = $scope.range.start.getFullYear();
 				
 				// get todays date
@@ -31,12 +33,9 @@ angular.module('calendarDemoApp', [])
 				$scope.setYear = function(selectedYear){
 					$scope.selectedYear = selectedYear;
 				};
-				
-				// create months array to be used in select
-				$scope.months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 				// set selected month
-				$scope.selectedMonth = $scope.today.toLocaleString('en-us', {month: 'long'});
+				$scope.selectedMonth = $scope.months[$scope.currentMonth];
 				$scope.setMonth = function(selectedMonth){
 					$scope.selectedMonth = selectedMonth;
 				};
@@ -44,7 +43,8 @@ angular.module('calendarDemoApp', [])
 				// update calendar when click "go"
 				$scope.changeCalendar = function(){
 					$scope.range = CalendarRange.getMonthlyRange(new Date($scope.selectedYear, $scope.months.indexOf($scope.selectedMonth), 1));
-					$scope.rangeMonth = $scope.range.start.toLocaleString('en-us', {month: 'long'});
+					$scope.rangeMonthNumber = $scope.range.start.getMonth();
+					$scope.rangeMonthName = $scope.months[$scope.rangeMonthNumber];
 					$scope.rangeYear = $scope.range.start.getFullYear();
 				};
 			}

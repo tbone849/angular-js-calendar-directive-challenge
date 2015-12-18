@@ -2,7 +2,7 @@
 	<select ng-model='selectedMonth' ng-change="setMonth(selectedMonth)" ng-options="month for month in months"></select>
 	<select ng-model='selectedYear' ng-change="setYear(selectedYear)" ng-options="year for year in yearRange"></select>
 	<button ng-click="changeCalendar()">Go</button>
-	<h2>{{rangeMonth}} {{rangeYear}}</h2>
+	<h2>{{rangeMonthName}} {{rangeYear}}</h2>
 </div>
 <div class="weekdayName" ng-repeat="name in weekdayNames">
 	{{name}}
