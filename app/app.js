@@ -8,45 +8,51 @@ angular.module('calendarDemoApp', [])
 				$scope.weekdayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 				$scope.months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 				
-				// get month range
-				$scope.range = CalendarRange.getMonthlyRange(new Date());
-				$scope.rangeMonthNumber = $scope.range.start.getMonth();
-				$scope.rangeMonthName = $scope.months[$scope.rangeMonthNumber];
-				$scope.rangeYear = $scope.range.start.getFullYear();
-				
-				// get todays date
-				$scope.today = new Date();
-				//get current year
-				$scope.currentYear = $scope.today.getFullYear();
-				// get todays month
-				$scope.currentMonth = $scope.today.getMonth();
-				// get todays day 
-				$scope.currentDay = $scope.today.getDate();
-				
-				// set outer ranges for year selector
-				var yearMax = $scope.currentYear + 20;
-				var yearMin = $scope.currentYear - 20;
-				$scope.yearRange = _.range(yearMin, yearMax);
-
-				// set selected year
-				$scope.selectedYear = $scope.currentYear;
 				$scope.setYear = function(selectedYear){
 					$scope.selectedYear = selectedYear;
 				};
 
-				// set selected month
-				$scope.selectedMonth = $scope.months[$scope.currentMonth];
 				$scope.setMonth = function(selectedMonth){
 					$scope.selectedMonth = selectedMonth;
 				};
 
-				// update calendar when click "go"
-				$scope.changeCalendar = function(){
-					$scope.range = CalendarRange.getMonthlyRange(new Date($scope.selectedYear, $scope.months.indexOf($scope.selectedMonth), 1));
+				$scope.setCalendarDate = function(date) {
+					$scope.range = CalendarRange.getMonthlyRange(date);
 					$scope.rangeMonthNumber = $scope.range.start.getMonth();
 					$scope.rangeMonthName = $scope.months[$scope.rangeMonthNumber];
 					$scope.rangeYear = $scope.range.start.getFullYear();
 				};
+
+				// update calendar when click "go"
+				$scope.changeCalendar = function(){
+					$scope.setCalendarDate(new Date($scope.selectedYear, $scope.months.indexOf($scope.selectedMonth), 1));
+				};
+
+				$scope.isDayInCurrentMonth = function(day) {
+					return (day.month !== $scope.range.start.getMonth());
+				};
+
+				$scope.isDayToday = function(day) {
+					return (day.date.getDate() === $scope.today.getDate() &&
+							day.date.getMonth() === $scope.today.getMonth() &&
+							day.year === $scope.today.getFullYear() );
+				};
+
+				// get todays date
+				$scope.today = new Date();
+
+				// set selected month
+				$scope.selectedMonth = $scope.months[$scope.today.getMonth()];
+				// set outer ranges for year selector
+				var yearMax = $scope.today.getFullYear() + 20;
+				var yearMin = $scope.today.getFullYear() - 20;
+				$scope.yearRange = _.range(yearMin, yearMax);
+
+				// set selected year
+				$scope.selectedYear = $scope.today.getFullYear();
+				
+				// get month range
+				$scope.setCalendarDate($scope.today);
 			}
 		};
 	});
