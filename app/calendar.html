@@ -1,6 +1,12 @@
+<div class="selectors">
+	<select ng-model='selectedMonth' ng-change="setMonth(selectedMonth)" ng-options="month for month in months"></select>
+	<select ng-model='selectedYear' ng-change="setYear(selectedYear)" ng-options="year for year in yearRange"></select>
+	<button ng-click="changeCalendar()">Go</button>
+	<h2>{{rangeMonth}} {{rangeYear}}</h2>
+</div>
 <div class="weekdayName" ng-repeat="name in weekdayNames">
 	{{name}}
 </div>
-<div class="day" ng-repeat="day in range.days" ng-class="{greyDay: day.month !== currentMonth, today: day.date.getDate() === today.getDate() && day.date.getMonth() === today.getMonth()}">
+<div class="day" ng-repeat="day in range.days" ng-class="{greyDay: day.month !== range.start.getMonth() , today: day.date.getDate() === currentDay && day.date.getMonth() === currentMonth && currentYear === day.year}">
 	{{day.day}}
 </div> 
