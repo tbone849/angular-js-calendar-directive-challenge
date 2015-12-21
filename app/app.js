@@ -16,7 +16,7 @@ angular.module('calendarDemoApp', [])
 					$scope.selectedMonth = selectedMonth;
 				};
 
-				$scope.setCalendarDate = function(date) {
+				$scope.setCalendarRange = function(date) {
 					$scope.range = CalendarRange.getMonthlyRange(date);
 					$scope.rangeMonthNumber = $scope.range.start.getMonth();
 					$scope.rangeMonthName = $scope.months[$scope.rangeMonthNumber];
@@ -25,7 +25,7 @@ angular.module('calendarDemoApp', [])
 
 				// update calendar when click "go"
 				$scope.changeCalendar = function(){
-					$scope.setCalendarDate(new Date($scope.selectedYear, $scope.months.indexOf($scope.selectedMonth), 1));
+					$scope.setCalendarRange(new Date($scope.selectedYear, $scope.months.indexOf($scope.selectedMonth), 1));
 				};
 
 				$scope.isDayInCurrentMonth = function(day) {
@@ -52,7 +52,7 @@ angular.module('calendarDemoApp', [])
 				$scope.selectedYear = $scope.today.getFullYear();
 				
 				// get month range
-				$scope.setCalendarDate($scope.today);
+				$scope.setCalendarRange($scope.today);
 			}
 		};
 	});

@@ -28,14 +28,14 @@ $max-width: 100%;
 }
 
 calendar {
-	.weekdayName, .day {
+	.weekdays, .day {
 		width: percentage(1/7);
 		display: inline-block;
 		border: 1px solid #b3b3b3;
 		min-height: 2em;
 	}
 
-	.weekdayName {
+	.weekdays {
 		height: 5%;
 		text-align: center;
 	}

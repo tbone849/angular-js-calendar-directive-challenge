@@ -15,6 +15,7 @@ var CalendarRange = {
   },
 
   getMonthlyRange : function(date) {
+    date = new Date(date);
     var month = date.getMonth();
     var startDay = new Date(date);
     startDay.setDate(1);
