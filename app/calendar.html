@@ -1,8 +1,8 @@
 <div class="selectors">
 	<select class='monthSelector' ng-model='selectedMonth' ng-change="setMonth(selectedMonth)" ng-options="month for month in months"></select>
 	<select class='yearSelector' ng-model='selectedYear' ng-change="setYear(selectedYear)" ng-options="year for year in yearRange"></select>
-	<button ng-click="changeCalendar()">Go</button>
-	<h2>{{rangeMonthName}} {{rangeYear}}</h2>
+	<button class="go-button" ng-click="changeCalendar()">Go</button>
+	<h2 class="month-year">{{rangeMonthName}} {{rangeYear}}</h2>
 </div>
 <div class="weekdays" id='{{name}}' ng-repeat="name in weekdayNames">
 	{{name}}

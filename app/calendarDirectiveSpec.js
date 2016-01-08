@@ -53,7 +53,7 @@ describe('calendar', function(){
         });
     });
     
-    ddescribe('setCalendarRange', function(){
+    describe('setCalendarRange', function(){
         it('should set the calendar range', function(){
             spyOn(myScope, 'setCalendarRange').andCallThrough();
             myScope.setCalendarRange(myScope.today);
